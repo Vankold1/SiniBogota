@@ -83,9 +83,37 @@ def preparar_entrada_para_xgboost(input_data, artifacts):
             else:
                 df_user[col] = pd.to_numeric(df_user[col], errors="coerce").fillna(0)
 
-    for col in cols_categoricas_codificadas:
+
+    cols_codificadas_enteras = [
+       "CLASE_SINIESTRO",
+       "CODIGO_LOCALIDAD",
+       "DISENO_LUGAR"
+    ]
+
+    cols_codificadas_float = [
+       "CLASE_VEHICULO_PRINCIPAL",
+       "servicio_principal",
+       "modalidad_principal",
+       "codigo_causa_principal"
+    ]
+
+    for col in cols_codificadas_enteras:
         if col in df_user.columns:
-            df_user[col] = df_user[col].astype("object")
+            df_user[col] = (
+               pd.to_numeric(df_user[col], errors="coerce")
+               .fillna(0)
+               .astype(int)
+               .astype("object")
+            )
+
+    for col in cols_codificadas_float:
+        if col in df_user.columns:
+            df_user[col] = (
+               pd.to_numeric(df_user[col], errors="coerce")
+               .fillna(0)
+               .astype(float)
+               .astype("object")
+            )
 
     for col in cat_cols:
         if col in df_user.columns:
