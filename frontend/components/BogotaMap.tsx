@@ -56,7 +56,7 @@ export default function BogotaMap({
     useState<FeatureCollection<Geometry, LocalidadProperties> | null>(null);
 
   useEffect(() => {
-    fetch("@/public/data/localidades_bogota_leaflet.geojson")
+    fetch("/data/localidades_bogota_leaflet.geojson")
       .then((response) => response.json())
       .then((geojson) => setData(geojson))
       .catch((error) => {
