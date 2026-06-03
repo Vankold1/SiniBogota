@@ -39,13 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Notebooks no incluidos en el repositorio final
-SiniBogota_AG.ipynb
-SiniBogota_LD_ANFIS.ipynb
-SiniBogota_notebook.ipynb
-
-# También si están dentro de notebooks/
-notebooks/SiniBogota_AG.ipynb
-notebooks/SiniBogota_LD_ANFIS.ipynb
-notebooks/SiniBogota_notebook.ipynb
